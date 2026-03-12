@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Serverless API to fetch YouTube video info via Apify",
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   }
 }
