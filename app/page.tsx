@@ -112,17 +112,17 @@ function ImpactChart({ baseline, postVideo, pubDate }: any) {
   }));
   return (
     <div className="mt-5">
-      <h3 className="text-sm font-medium text-gray-600 mb-3">Courbe d&apos;impact</h3>
+      <h3 style={{fontSize:".7rem",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase",color:"#333",marginBottom:".75rem"}}>Courbe d&apos;impact</h3>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={chartData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-          <XAxis dataKey="date" tick={{ fontSize: 11 }} />
-          <YAxis tick={{ fontSize: 11 }} />
-          <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
-          <Legend wrapperStyle={{ fontSize: 12 }} />
-          <ReferenceLine x={pubDate.slice(5)} stroke="#f59e0b" strokeDasharray="4 4" label={{ value: "Video", position: "top", fontSize: 11, fill: "#f59e0b" }} />
-          <Line type="monotone" dataKey="baseline" stroke="#94a3b8" strokeWidth={2} dot={{ r: 3 }} connectNulls={false} />
-          <Line type="monotone" dataKey="post-video" stroke="#3b82f6" strokeWidth={2.5} dot={{ r: 4 }} connectNulls={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1a" />
+          <XAxis dataKey="date" tick={{ fontSize: 11, fill:"#444" }} axisLine={{stroke:"#222"}} tickLine={false} />
+          <YAxis tick={{ fontSize: 11, fill:"#444" }} axisLine={false} tickLine={false} />
+          <Tooltip contentStyle={{ background:"#111", border:"1px solid #222", borderRadius:10, fontSize:12, color:"#e0e0e0" }} labelStyle={{color:"#666"}} />
+          <Legend wrapperStyle={{ fontSize: 12, color:"#555" }} />
+          <ReferenceLine x={pubDate.slice(5)} stroke="#ff4444" strokeDasharray="4 4" label={{ value: "Vidéo", position: "top", fontSize: 11, fill: "#ff4444" }} />
+          <Line type="monotone" dataKey="baseline" stroke="#333" strokeWidth={2} dot={{ r: 3, fill:"#333" }} connectNulls={false} />
+          <Line type="monotone" dataKey="post-video" stroke="#ff4444" strokeWidth={2.5} dot={{ r: 4, fill:"#ff4444" }} connectNulls={false} />
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -130,12 +130,12 @@ function ImpactChart({ baseline, postVideo, pubDate }: any) {
 }
 
 function MetricBox({ label, value, sub, color = "blue" }: any) {
-  const colors: any = { blue: "text-blue-600", green: "text-green-600", orange: "text-orange-600", purple: "text-purple-600" };
+  const colors: any = { blue: "#3b82f6", green: "#22c55e", orange: "#f97316", purple: "#a855f7" };
   return (
-    <div className="bg-gray-50 rounded-lg p-4 text-center">
-      <div className="text-xs text-gray-500 mb-1">{label}</div>
-      <div className={`text-2xl font-bold ${colors[color]}`}>{value}</div>
-      {sub && <div className="text-xs text-gray-400 mt-1">{sub}</div>}
+    <div style={{background:"#0a0a0a",border:"1px solid #1a1a1a",borderRadius:12,padding:"1rem",textAlign:"center"}}>
+      <div style={{fontSize:".68rem",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase",color:"#3a3a3a",marginBottom:".35rem"}}>{label}</div>
+      <div style={{fontSize:"1.5rem",fontWeight:800,color:colors[color],fontFamily:"'Syne',sans-serif",lineHeight:1}}>{value}</div>
+      {sub && <div style={{fontSize:".68rem",color:"#3a3a3a",marginTop:".3rem"}}>{sub}</div>}
     </div>
   );
 }
@@ -226,88 +226,88 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8" style={{background:"#080808",color:"#e0e0e0",fontFamily:"'DM Sans',sans-serif"}}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');*{box-sizing:border-box}.step-pill{display:flex;align-items:center;gap:6px;padding:8px 4px;border-bottom:2px solid transparent;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#333;cursor:default}.step-pill.active{color:#fff;border-bottom-color:#ff4444}.step-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;background:#1a1a1a;color:#333}.step-pill.active .step-num{background:#ff4444;color:#fff}.step-pill.done .step-num{background:#1a1a1a;color:#22c55e}input::placeholder{color:#2a2a2a!important}input[type=range]{-webkit-appearance:none;height:3px;background:#1e1e1e;border-radius:4px;outline:none;width:100%}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:#ff4444;border-radius:50%;cursor:pointer}input[type=date]::-webkit-calendar-picker-indicator{filter:invert(.2)}.dark-input{background:#0a0a0a!important;border:1px solid #1e1e1e!important;border-radius:10px!important;color:#e0e0e0!important;font-family:'DM Sans',sans-serif!important;font-size:.88rem!important;padding:.65rem .9rem!important;outline:none!important;width:100%}.dark-input:focus{border-color:#ff4444!important}.dark-card{background:#0f0f0f;border:1px solid #1a1a1a;border-radius:16px;padding:1.75rem}.dark-label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#444;margin-bottom:.4rem}.btn-red{background:#ff4444;border:none;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;padding:.8rem 1.5rem;border-radius:12px;cursor:pointer;letter-spacing:.02em;width:100%;margin-top:1rem}.btn-red:disabled{opacity:.25;cursor:not-allowed}.btn-ghost{background:transparent;border:1px solid #1e1e1e;color:#555;font-family:'DM Sans',sans-serif;font-size:.85rem;padding:.7rem 1.2rem;border-radius:10px;cursor:pointer}.ev-btn{width:100%;text-align:left;padding:8px 12px;font-size:.8rem;border:none;border-bottom:1px solid #141414;background:transparent;color:#555;cursor:pointer;font-family:'DM Sans',sans-serif}.ev-btn:hover{background:#141414;color:#ddd}.ev-btn.sel{background:rgba(255,68,68,.08);color:#ff4444;font-weight:600}::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#222;border-radius:4px}`}</style>
       <div className="max-w-2xl mx-auto">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">YouTube CTA Tracker</h1>
-          <p className="text-sm text-gray-500 mt-1">Mesure l&apos;efficacité de tes CTAs YouTube sur tes features produit</p>
+        <div className="mb-6" style={{paddingTop:"1.5rem"}}>
+          <div style={{display:"inline-flex",alignItems:"center",gap:6,background:"rgba(255,40,40,.1)",border:"1px solid rgba(255,40,40,.2)",color:"#ff4444",fontSize:10,fontWeight:700,letterSpacing:".14em",textTransform:"uppercase",padding:"4px 12px",borderRadius:100,marginBottom:"1rem"}}>
+            <span style={{width:6,height:6,background:"#ff4444",borderRadius:"50%",display:"inline-block"}} />
+            Outil d&apos;analyse
+          </div>
+          <h1 style={{fontFamily:"'Syne',sans-serif",fontSize:"clamp(1.8rem,4vw,2.4rem)",fontWeight:800,letterSpacing:"-.02em",color:"#fff",marginBottom:".4rem",lineHeight:1.05}}>
+            YouTube <span style={{color:"#ff4444"}}>CTA</span> Tracker
+          </h1>
+          <p style={{fontSize:".88rem",color:"#444"}}>Mesure l&apos;efficacité de tes CTAs YouTube sur tes features produit</p>
         </div>
 
-        <div className="flex items-center gap-1 mb-6">
-          {["Vidéo", "Feature", "Résultats"].map((s, i) => (
-            <div key={i} className="flex items-center gap-1">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${i+1 < step ? "bg-green-500 text-white" : i+1 === step ? "bg-blue-600 text-white ring-2 ring-blue-300" : "bg-gray-200 text-gray-500"}`}>
-                {i+1 < step ? "✓" : i+1}
-              </div>
-              <span className={`text-xs hidden sm:inline ${i+1 === step ? "text-blue-700 font-semibold" : "text-gray-400"}`}>{s}</span>
-              {i < 2 && <div className="w-6 h-px bg-gray-300 mx-1" />}
+        <div style={{display:"flex",borderBottom:"1px solid #1a1a1a",marginBottom:"1.5rem"}}>
+          {["Vidéo","Feature","Résultats"].map((s,i) => (
+            <div key={i} className={`step-pill${i+1===step?" active":i+1<step?" done":""}`} style={{flex:1}}>
+              <span className="step-num">{i+1 < step ? "✓" : i+1}</span>
+              <span className="hidden sm:inline">{s}</span>
             </div>
           ))}
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4 text-sm text-red-700 flex justify-between items-center">
+          <div style={{background:"rgba(255,68,68,.07)",border:"1px solid rgba(255,68,68,.2)",borderRadius:10,padding:".75rem 1rem",marginBottom:"1rem",fontSize:".83rem",color:"#ff6666",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
             <span>{error}</span>
-            <button onClick={() => setError(null)} className="ml-2 text-red-500 font-bold">✕</button>
+            <button onClick={() => setError(null)} style={{background:"none",border:"none",color:"#ff4444",cursor:"pointer",fontSize:"1rem",fontWeight:700}}>✕</button>
           </div>
         )}
         {loading && (
-          <div className="flex items-center gap-3 py-3">
-            <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
-            <span className="text-sm text-gray-600">{loadingMsg}</span>
+          <div style={{display:"flex",alignItems:"center",gap:12,padding:".75rem 0",marginBottom:".5rem"}}>
+            <div style={{width:14,height:14,border:"2px solid #333",borderTopColor:"#ff4444",borderRadius:"50%"}} className="animate-spin" />
+            <span style={{fontSize:".82rem",color:"#555"}}>{loadingMsg}</span>
           </div>
         )}
 
         {step === 1 && !loading && (
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
-            <h2 className="font-semibold text-lg mb-4">Informations vidéo</h2>
+          <div className="dark-card">
+            <h2 style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#fff",marginBottom:"1.25rem"}}>Informations vidéo</h2>
             <div className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Lien YouTube</label>
+                <label className="dark-label">Lien YouTube</label>
                 <div className="flex gap-2">
                   <input type="url" value={videoUrl} onChange={e => { setVideoUrl(e.target.value); setVideoFetched(false); }}
                     placeholder="https://youtube.com/watch?v=..."
-                    className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                    className="dark-input" style={{flex:1}} />
                   <button onClick={fetchVideoInfo} disabled={!videoId || fetchingVideo}
-                    className="px-4 py-2 bg-red-500 hover:bg-red-600 disabled:bg-gray-300 text-white text-sm font-medium rounded-lg flex items-center gap-1.5">
-                    {fetchingVideo ? <><div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" /><span>Chargement...</span></> : "▶ Récupérer"}
+                    style={{background:"#ff4444",border:"none",color:"#fff",fontFamily:"'DM Sans',sans-serif",fontWeight:700,fontSize:".82rem",padding:"0 1.1rem",borderRadius:10,cursor:"pointer",display:"flex",alignItems:"center",gap:6,opacity:(!videoId||fetchingVideo)?.3:1}}>
+                    {fetchingVideo ? <><div style={{width:13,height:13,border:"2px solid rgba(255,255,255,.3)",borderTopColor:"#fff",borderRadius:"50%"}} className="animate-spin"/><span>Chargement...</span></> : "▶ Récupérer"}
                   </button>
                 </div>
               </div>
               {videoId && videoFetched && (
-                <img src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`} alt="Thumbnail" className="w-full rounded-lg border border-gray-200" />
+                <img src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`} alt="Thumbnail" style={{width:"100%",borderRadius:10,border:"1px solid #1a1a1a",display:"block"}} />
               )}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Titre {videoFetched && videoTitle && <span className="text-green-600 text-xs ml-1">✓ auto</span>}</label>
-                <input type="text" value={videoTitle} onChange={e => setVideoTitle(e.target.value)} placeholder="Titre de la vidéo"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                <label className="dark-label">Titre {videoFetched && videoTitle && <span style={{color:"#22c55e",fontSize:10,fontWeight:700,background:"rgba(34,197,94,.1)",borderRadius:4,padding:"1px 6px",marginLeft:4}}>✓ AUTO</span>}</label>
+                <input type="text" value={videoTitle} onChange={e => setVideoTitle(e.target.value)} placeholder="Titre de la vidéo" className="dark-input" />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Publication {videoFetched && pubDate && <span className="text-green-600 text-xs ml-1">✓</span>}</label>
-                  <input type="date" value={pubDate} onChange={e => setPubDate(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                  <label className="dark-label">Publication {videoFetched && pubDate && <span style={{color:"#22c55e",fontSize:10}}>✓</span>}</label>
+                  <input type="date" value={pubDate} onChange={e => setPubDate(e.target.value)} className="dark-input" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Vues {videoFetched && totalViews && <span className="text-green-600 text-xs ml-1">✓</span>}</label>
-                  <input type="number" value={totalViews} onChange={e => setTotalViews(e.target.value)} placeholder="15000"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                  <label className="dark-label">Vues {videoFetched && totalViews && <span style={{color:"#22c55e",fontSize:10}}>✓</span>}</label>
+                  <input type="number" value={totalViews} onChange={e => setTotalViews(e.target.value)} placeholder="15000" className="dark-input" />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">% rétention au moment du CTA</label>
+                <label className="dark-label">% rétention au moment du CTA</label>
                 <div className="flex items-center gap-3">
-                  <input type="range" min="0" max="100" value={retentionPct} onChange={e => setRetentionPct(e.target.value)} className="flex-1 accent-blue-600" />
-                  <div className="flex items-center gap-1">
+                  <input type="range" min="0" max="100" value={retentionPct} onChange={e => setRetentionPct(e.target.value)} style={{flex:1}} />
+                  <div style={{display:"flex",alignItems:"center",gap:4,background:"#0a0a0a",border:"1px solid #1e1e1e",borderRadius:8,padding:"4px 8px"}}>
                     <input type="number" min="0" max="100" value={retentionPct} onChange={e => setRetentionPct(e.target.value)}
-                      className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center font-mono focus:outline-none" />
-                    <span className="text-sm text-gray-500">%</span>
+                      style={{width:32,background:"transparent",border:"none",color:"#ff4444",fontWeight:700,fontSize:".9rem",textAlign:"center",outline:"none",fontFamily:"'DM Sans',sans-serif"}} />
+                    <span style={{color:"#444",fontSize:".85rem"}}>%</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-400 mt-1">YouTube Studio → Analytics → Rétention d&apos;audience</p>
+                <p style={{fontSize:".7rem",color:"#2e2e2e",marginTop:".4rem"}}>→ YouTube Studio → Analytics → Rétention d&apos;audience</p>
               </div>
-              <button onClick={() => setStep(2)} disabled={!videoTitle || !pubDate || !totalViews}
-                className="w-full mt-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-medium py-2.5 rounded-lg text-sm">
+              <button onClick={() => setStep(2)} disabled={!videoTitle || !pubDate || !totalViews} className="btn-red">
                 Suivant →
               </button>
             </div>
@@ -315,49 +315,47 @@ export default function App() {
         )}
 
         {step === 2 && !loading && (
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
-            <h2 className="font-semibold text-lg mb-2">Mapping CTA → Feature</h2>
-            <p className="text-xs text-gray-400 mb-4">{videoTitle} · {parseInt(totalViews).toLocaleString()} vues</p>
+          <div className="dark-card">
+            <h2 style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#fff",marginBottom:".4rem"}}>Mapping CTA → Feature</h2>
+            <p style={{fontSize:".75rem",color:"#333",marginBottom:"1.25rem",fontFamily:"monospace"}}>{videoTitle} · {parseInt(totalViews).toLocaleString()} vues</p>
             <div className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Event Amplitude <span className="text-xs text-purple-600 font-normal">({AMP_EVENTS.length} events)</span></label>
+                <label className="dark-label">Event Amplitude <span style={{color:"#ff4444",fontWeight:500,textTransform:"none",letterSpacing:0}}>({AMP_EVENTS.length} events)</span></label>
                 <div className="space-y-2">
-                  <input type="text" value={eventSearch} onChange={e => setEventSearch(e.target.value)} placeholder="Rechercher un event..."
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-                  <div className="border border-gray-200 rounded-lg overflow-hidden">
-                    <div className="max-h-48 overflow-y-auto">
+                  <input type="text" value={eventSearch} onChange={e => setEventSearch(e.target.value)} placeholder="Rechercher un event..." className="dark-input" />
+                  <div style={{border:"1px solid #1a1a1a",borderRadius:10,overflow:"hidden"}}>
+                    <div style={{maxHeight:200,overflowY:"auto"}}>
                       {filteredEvents.length === 0
-                        ? <div className="px-3 py-2 text-sm text-gray-400 italic">Aucun event trouvé</div>
+                        ? <div style={{padding:"10px 12px",fontSize:".8rem",color:"#333"}}>Aucun event trouvé</div>
                         : filteredEvents.map((ev, i) => (
                           <button key={i} onClick={() => { setSelectedEvent(ev); setCustomEvent(""); }}
-                            className={`w-full text-left px-3 py-2 text-sm border-b border-gray-100 last:border-0 transition-colors ${selectedEvent === ev ? "bg-blue-50 text-blue-700 font-medium" : "hover:bg-gray-50 text-gray-700"}`}>
+                            className={`ev-btn${selectedEvent === ev ? " sel" : ""}`}>
                             {ev}
                           </button>
                         ))}
                     </div>
                     <button onClick={() => setSelectedEvent("__custom")}
-                      className={`w-full text-left px-3 py-2 text-xs border-t border-gray-200 ${selectedEvent === "__custom" ? "bg-yellow-50 text-yellow-700" : "text-gray-400 hover:bg-gray-50"}`}>
+                      className={`ev-btn${selectedEvent === "__custom" ? " sel" : ""}`}
+                      style={{borderTop:"1px solid #1a1a1a",fontSize:".75rem"}}>
                       ✏️ Saisir manuellement
                     </button>
                   </div>
                   {selectedEvent && selectedEvent !== "__custom" && (
-                    <p className="text-xs text-blue-600 font-mono bg-blue-50 rounded px-2 py-1">✓ {selectedEvent}</p>
+                    <p style={{fontSize:".75rem",color:"#ff4444",background:"rgba(255,68,68,.06)",borderRadius:6,padding:"5px 10px",fontFamily:"monospace"}}>✓ {selectedEvent}</p>
                   )}
                   {selectedEvent === "__custom" && (
-                    <input type="text" value={customEvent} onChange={e => setCustomEvent(e.target.value)} placeholder="Nom exact de l'event"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                    <input type="text" value={customEvent} onChange={e => setCustomEvent(e.target.value)} placeholder="Nom exact de l'event" className="dark-input" />
                   )}
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Description du CTA</label>
-                <input type="text" value={ctaDescription} onChange={e => setCtaDescription(e.target.value)} placeholder="Ex: Essayez l'export PDF gratuitement"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                <label className="dark-label">Description du CTA</label>
+                <input type="text" value={ctaDescription} onChange={e => setCtaDescription(e.target.value)} placeholder="Ex: Essayez l'export PDF gratuitement" className="dark-input" />
               </div>
               <div className="flex gap-2 mt-2">
-                <button onClick={() => setStep(1)} className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-600 hover:bg-gray-50">← Retour</button>
+                <button onClick={() => setStep(1)} className="btn-ghost">← Retour</button>
                 <button onClick={analyzeImpact} disabled={!activeEvent}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-medium py-2.5 rounded-lg text-sm">
+                  style={{flex:1,background:"#ff4444",border:"none",color:"#fff",fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:".88rem",padding:".8rem",borderRadius:12,cursor:"pointer",opacity:!activeEvent?.25:1}}>
                   🔍 Analyser l&apos;impact
                 </button>
               </div>
@@ -367,9 +365,9 @@ export default function App() {
 
         {step === 3 && results && !loading && (
           <div className="space-y-4">
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
-              <h2 className="font-semibold text-lg mb-1">Résultats — {videoTitle}</h2>
-              <p className="text-xs text-gray-400 mb-4">Event: {results.eventName} · Publié le {pubDate} · 3j post-publication</p>
+            <div className="dark-card">
+              <h2 style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:"1.1rem",color:"#fff",marginBottom:".3rem"}}>Résultats — {videoTitle}</h2>
+              <p style={{fontSize:".72rem",color:"#333",marginBottom:"1.25rem",fontFamily:"monospace"}}>Event: {results.eventName} · Publié le {pubDate} · 3j post-publication</p>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-5">
                 <MetricBox label="Vues au CTA" value={(results.viewsAtCTA || 0).toLocaleString()} sub={retentionPct + "% de " + parseInt(totalViews).toLocaleString()} color="blue" />
                 <MetricBox label="J+1 events" value={(results.j1?.total_events || 0).toLocaleString()} sub={"uplift " + (results.j1?.uplift > 0 ? "+" : "") + results.j1?.uplift + "%"} color={results.j1?.uplift > 0 ? "green" : "orange"} />
@@ -378,35 +376,34 @@ export default function App() {
                 <MetricBox label="Users post-vidéo" value={(results.post_video?.unique_users || 0).toLocaleString()} sub="3 jours" color="purple" />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h3 className="text-sm font-medium text-gray-600 mb-2">Baseline (7j avant)</h3>
-                  <div className="space-y-1">
-                    {(results.baseline?.daily || []).map((d: any, i: number) => (
-                      <div key={i} className="flex justify-between text-xs"><span className="text-gray-500">{d.date}</span><span className="font-mono">{d.count}</span></div>
-                    ))}
-                    <div className="flex justify-between text-xs font-semibold border-t pt-1 mt-1"><span>Total</span><span>{results.baseline?.total_events}</span></div>
+                {[{title:"Baseline (7j avant)",data:results.baseline?.daily,total:results.baseline?.total_events},{title:"Post-vidéo (3j)",data:results.post_video?.daily,total:results.post_video?.total_events}].map((s,idx)=>(
+                  <div key={idx}>
+                    <h3 style={{fontSize:".7rem",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase",color:"#333",marginBottom:".6rem"}}>{s.title}</h3>
+                    <div className="space-y-1">
+                      {(s.data || []).map((d: any, i: number) => (
+                        <div key={i} style={{display:"flex",justifyContent:"space-between",fontSize:".78rem"}}>
+                          <span style={{color:"#444"}}>{d.date}</span>
+                          <span style={{fontFamily:"monospace",color:"#888"}}>{d.count}</span>
+                        </div>
+                      ))}
+                      <div style={{display:"flex",justifyContent:"space-between",fontSize:".78rem",fontWeight:700,borderTop:"1px solid #1a1a1a",paddingTop:6,marginTop:4}}>
+                        <span style={{color:"#555"}}>Total</span>
+                        <span style={{fontFamily:"monospace",color:"#e0e0e0"}}>{s.total}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-600 mb-2">Post-vidéo (3j)</h3>
-                  <div className="space-y-1">
-                    {(results.post_video?.daily || []).map((d: any, i: number) => (
-                      <div key={i} className="flex justify-between text-xs"><span className="text-gray-500">{d.date}</span><span className="font-mono">{d.count}</span></div>
-                    ))}
-                    <div className="flex justify-between text-xs font-semibold border-t pt-1 mt-1"><span>Total</span><span>{results.post_video?.total_events}</span></div>
-                  </div>
-                </div>
+                ))}
               </div>
               {results._debug && (
                 <details className="mt-3 text-xs">
-                  <summary className="cursor-pointer text-orange-600 font-medium">⚠️ Données à 0 — réponse brute</summary>
-                  <pre className="mt-2 bg-gray-50 rounded p-2 overflow-auto max-h-48 text-gray-600 whitespace-pre-wrap">{JSON.stringify(results._debug, null, 2)}</pre>
+                  <summary style={{cursor:"pointer",color:"#f97316",fontWeight:600,fontSize:".75rem"}}>⚠️ Données à 0 — réponse brute</summary>
+                  <pre style={{marginTop:8,background:"#0a0a0a",borderRadius:8,padding:10,overflowX:"auto",maxHeight:180,fontSize:".7rem",color:"#444",whiteSpace:"pre-wrap"}}>{JSON.stringify(results._debug, null, 2)}</pre>
                 </details>
               )}
               <ImpactChart baseline={results.baseline} postVideo={results.post_video} pubDate={pubDate} />
-              <div className="mt-5 bg-blue-50 border border-blue-200 rounded-lg p-3">
-                <h3 className="text-sm font-semibold text-blue-800 mb-1">Interprétation</h3>
-                <p className="text-xs text-blue-700">
+              <div style={{marginTop:"1.25rem",background:"rgba(255,68,68,.05)",border:"1px solid rgba(255,68,68,.15)",borderRadius:12,padding:"1rem"}}>
+                <h3 style={{fontSize:".7rem",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase",color:"#ff4444",marginBottom:".4rem"}}>Interprétation</h3>
+                <p style={{fontSize:".82rem",color:"#555",lineHeight:1.6}}>
                   {results.uplift > 20 ? `Fort impact ! Usage en hausse de ${results.uplift}% après la vidéo.`
                     : results.uplift > 5 ? `Impact modéré (${results.uplift}%). Effet positif mais optimisable.`
                     : results.uplift > 0 ? `Impact faible (${results.uplift}%). CTA à repositionner.`
@@ -415,7 +412,7 @@ export default function App() {
                 </p>
               </div>
             </div>
-            <button onClick={resetAll} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm">
+            <button onClick={resetAll} style={{width:"100%",background:"#111",border:"1px solid #1a1a1a",color:"#444",fontFamily:"'DM Sans',sans-serif",fontWeight:600,fontSize:".85rem",padding:".8rem",borderRadius:12,cursor:"pointer"}}>
               + Analyser un autre CTA
             </button>
           </div>
