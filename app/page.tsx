@@ -44,7 +44,7 @@ async function callQueryDataset(eventName: string, startDate: string, endDate: s
       groupBy: [], segments: [{ conditions: [] }]
     }
   };
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+  const res = await fetch("/api/amplitude-query", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
