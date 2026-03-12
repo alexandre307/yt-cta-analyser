@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/youtube-info.js": {
+    "app/api/youtube-info/route.ts": {
       "maxDuration": 130
     }
   }
